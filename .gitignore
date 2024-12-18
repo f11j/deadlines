@@ -6,5 +6,12 @@
 !requirements/local.info
 !requirements/pip_base.list
 !requirements/pip_local.list
+
+!.editorconfig
+# RECOMMENDED: .env.local.optional
+# REQUIRED: .env.local.required
+!.envrc
+# OPTIONAL: .envrc.local
 !.gitignore
+!Makefile
 !requirements.txt
