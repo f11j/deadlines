@@ -1,0 +1,12 @@
+# Telegram client
+Pyrogram==2.0.106
+
+# Speedup
+TgCrypto==1.2.5
+uvloop==0.21.0
+
+# Calls
+py-tgcalls==2.0.6
+
+aiofiles==24.1.0
+aiosqlite==0.20.0

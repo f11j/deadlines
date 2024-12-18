@@ -1,0 +1,15 @@
+-r ./pip_base.list
+
+# Lint
+flake8
+ipython
+isort
+mypy
+pyspelling
+
+# Security
+bandit
+safety
+
+pip-review
+vermin

@@ -1,4 +1,10 @@
 # Everything which is not allowed is forbidden.
 *
 
+!requirements/
+!requirements/apt.list
+!requirements/local.info
+!requirements/pip_base.list
+!requirements/pip_local.list
 !.gitignore
+!requirements.txt
