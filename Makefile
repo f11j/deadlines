@@ -18,6 +18,9 @@ ARGS := $(filter-out --,$(filter-out $(firstword $(MAKECMDGOALS)),$(MAKECMDGOALS
 FIRST_ARG := $(word 1, $(ARGS))
 SECOND_ARG := $(word 2, $(ARGS))
 
+PYTHON = $(if $(DEADLINES_PYTHON),$(DEADLINES_PYTHON),python)
+ENTRY_POINT = $(if $(DEADLINES_ENTRY_POINT),$(DEADLINES_ENTRY_POINT),main.py)
+
 .DEFAULT_GOAL := help
 
 .PHONY: help
@@ -29,6 +32,20 @@ help: ## Print comments starting with double slash
 .PHONY: aptget
 aptget: ## Install Linux requirements
 	@sed 's/\#.*//' "$$PROJECT_DIR"/requirements/x86_64/*.list
+
+
+.PHONY: run
+run:  ## Start program
+	@${INFO} "$@: PYTHON= (DEADLINES_PYTHON='$(DEADLINES_PYTHON)' or $(PYTHON))"
+	@${INFO} "$@: ENTRY_POINT= (DEADLINES_ENTRY_POINT='$(DEADLINES_ENTRY_POINT)' or $(ENTRY_POINT)"
+	@"$(PYTHON)" "$(ENTRY_POINT)"
+
+.PHONY: clean
+clean:  ## Remove Python cache
+	@find . -name '*.pyc' -exec rm -f {} +
+	@find . -name '*.pyo' -exec rm -f {} +
+	@find . -name '*~' -exec rm -f {} +
+	@find . -name '__pycache__' -exec rm -fr {} +
 
 
 -include [Mm]akefile.local*
